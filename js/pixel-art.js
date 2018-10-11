@@ -49,6 +49,7 @@ function listaColores() {
 function listaPixel() {
   for (i = 0; i < 1749; i++) {
     var nuevoPixel = document.createElement('div')
+    nuevoPixel.classList.add("pixel-suelto")
     grillaPixels.appendChild(nuevoPixel)
 
     nuevoPixel.addEventListener('mousedown', (e) => {
@@ -66,6 +67,15 @@ function listaPixel() {
   }
 }
 
+function limpiarPintura() {
+  var $pixeles = $("#grilla-pixeles div");
+  for (var i = 0; i < 1749; i++) {
+    $($pixeles[i]).animate({
+      backgroundColor: '#FFFFFF'
+    }, 1000)
+  }
+}
+
 
 function cambiarColorSeleccionado(e) {
   indicadorColor.style.backgroundColor = e.target.style.backgroundColor
@@ -74,6 +84,7 @@ function cambiarColorSeleccionado(e) {
 function pintarColorSeleccionado(elem) {
   clicked ? elem.path[0].style.backgroundColor = indicadorColor.style.backgroundColor : null
 }
+
 
 
 listaColores()
